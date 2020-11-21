@@ -135,8 +135,8 @@ class MultitenancyServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../../database/migrations/' => database_path('migrations'),
-            __DIR__.'/../../database/seeders/' => database_path('migrations/seeds'),
-            __DIR__.'/../../database/factories/' => database_path('migrations/factories'),
+            __DIR__.'/../../database/seeders/' => database_path('seeds'),
+            __DIR__.'/../../database/factories/' => database_path('factories'),
         ], 'tenancy-migrations');
 
 
