@@ -1,5 +1,5 @@
 {
-    "name": "callcocam/siga-multtenancy-v1",
+    "name": "callcocam/laravel-multi-tenancy-v1",
     "description": "Construcao de formularios e tabelas para livewire",
     "license": "MIT",
     "authors": [
