@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Call\\Tenant\\Providers\\MuServiceProvider"
+                "Call\\Tenant\\Providers\\MultitenancyServiceProvider"
             ]
         }
     },
