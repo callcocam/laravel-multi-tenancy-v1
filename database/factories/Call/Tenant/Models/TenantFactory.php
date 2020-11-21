@@ -4,11 +4,12 @@
  * User: callcocam@gmail.com, contato@sigasmart.com.br
  * https://www.sigasmart.com.br
  */
-namespace Database\Factories;
+namespace Database\Factories\Call\Tenant\Models;
 
 
 use Call\Tenant\Models\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Ramsey\Uuid\Uuid;
 
 class TenantFactory extends Factory
 {
@@ -27,7 +28,7 @@ class TenantFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id'=>Uuid::uuid4()
         ];
     }
 }

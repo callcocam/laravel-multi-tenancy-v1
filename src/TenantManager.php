@@ -45,6 +45,7 @@ class TenantManager
      */
     public function newModel(Model $model)
     {
+        $model->setAttribute('id', Uuid::uuid4());
         if (!$model->isTenant()) {
             return;
         }
@@ -53,7 +54,6 @@ class TenantManager
             return;
         }
         $this->modelTenants($model)->each(function ($tenantId, $tenantColumn) use ($model) {
-            $model->setAttribute('id', Uuid::uuid4());
             if (!isset($model->{$tenantColumn})) {
                 $model->setAttribute($tenantColumn, $tenantId);
             }

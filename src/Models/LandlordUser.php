@@ -4,7 +4,7 @@
  * User: callcocam@gmail.com, contato@sigasmart.com.br
  * https://www.sigasmart.com.br
  */
-namespace Call\Models;
+namespace Call\Tenant\Models;
 use App\Models\User;
 use Call\Tenant\Models\Concerns\UsesLandlordConnection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
