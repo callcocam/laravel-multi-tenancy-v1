@@ -25,6 +25,7 @@ class MultitenancyServiceProvider extends ServiceProvider
                 ->registerPublishables();
         }
 
+
         $this
             ->bootCommands()
             ->registerTenantFinder()

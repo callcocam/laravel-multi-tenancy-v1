@@ -14,7 +14,7 @@
             "helper.php"
         ],
         "psr-4": {
-            "Call\\Tenant": "src"
+            "Call\\Tenant\\": "src"
         }
     },
     "extra": {
