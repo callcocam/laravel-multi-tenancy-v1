@@ -1,5 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 #Add 
 
 #Voce pode criar um grupo
@@ -47,17 +45,17 @@ if(!app()->runningInConsole()){
 
 ```
 //somente copiar o multtenancy.file
-php artisan vendor:publish --tag=tenant-config
+php artisan vendor:publish --tag=tenancy-config
 //publicar as migrations (Obrigatorio)
-php artisan vendor:publish --tag=tenant-migrations
+php artisan vendor:publish --tag=tenancy-migrations
 
 // in a database file
 //para substituir o database file(opcional)
-php artisan vendor:publish --tag=tenant-config --force
+php artisan vendor:publish --tag=tenancy-config --force
 
 //Obrigatorio se não usar os comando ascima
     'tenant' => [
-                                                       'driver' => 'mysql',
+       'driver' => 'mysql',
        'url' => env('DATABASE_URL'),
        'host' => env('DB_HOST', '127.0.0.1'),
        'port' => env('DB_PORT', '3306'),
