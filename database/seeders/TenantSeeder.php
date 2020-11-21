@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
-use Call\Tenant\Models\Tenant;
+use App\Models\Account;
+use App\Models\Contact;
+use App\Models\Organization;
+use Call\Tenant\Models\TenantUser;
 use Illuminate\Database\Seeder;
 
 class TenantSeeder extends Seeder
@@ -14,40 +17,25 @@ class TenantSeeder extends Seeder
      */
     public function run()
     {
-        Tenant::query()->delete();
+        $account = Account::create(['name' => 'Acme Corporation']);
 
-        $tenants = [
-            [
-                'name'=> 'SERVER',
-                'domain'=>request()->getHost(),
-                'database'=>'landlord',
-                'prefix'=>'landlord',
-                'middleware'=>['landlord'],
-            ],
-            [
-                'name'=> 'Client 01',
-                'domain'=> sprintf('client-01.%s',str_replace('www.','',request()->getHost())),
-                'database'=>'tenants',
-                'prefix'=>'admin',
-                'middleware'=>['tenant'],
-            ],
-            [
-                'name'=> 'Client 02',
-                'domain'=>sprintf('client-02.%s',str_replace('www.','',request()->getHost())),
-                'database'=>'tenants',
-                'prefix'=>'admin',
-                'middleware'=>['tenant'],
-            ],
-            [
-                'name'=> 'Client 03',
-                'domain'=>sprintf('client-03.%s',str_replace('www.','',request()->getHost())),
-                'database'=>'tenants',
-                'prefix'=>'admin',
-                'middleware'=>['tenant'],
-            ]
-        ];
-        foreach ($tenants as $value):
-            Tenant::factory(1)->create($value);
-        endforeach;
+        factory(TenantUser::class)->create([
+            'account_id' => $account->id,
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'johndoe@example.com',
+            'owner' => true,
+        ]);
+
+        factory(TenantUser::class, 5)->create(['account_id' => $account->id]);
+
+        $organizations = factory(Organization::class, 100)
+            ->create(['account_id' => $account->id]);
+
+        factory(Contact::class, 100)
+            ->create(['account_id' => $account->id])
+            ->each(function ($contact) use ($organizations) {
+                $contact->update(['organization_id' => $organizations->random()->id]);
+            });
     }
 }

@@ -62,12 +62,12 @@ return [
     /*
      * This key will be used to bind the tenant  model user authenticate.
      */
-    'tenants_model_user' => \Call\Models\TenantUser::class,
+    'tenants_model_user' => \Call\Tenant\Models\TenantUser::class,
 
     /*
      * This key will be used to bind the landlord model user authenticate.
      */
-    'landlord_model_user' => \Call\Models\LandlordUser::class,
+    'landlord_model_user' => \Call\Tenant\Models\LandlordUser::class,
 
     /*
      * This key will be used to bind the current tenant in the container.

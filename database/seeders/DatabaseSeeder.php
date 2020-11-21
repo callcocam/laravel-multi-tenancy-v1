@@ -21,14 +21,19 @@ class DatabaseSeeder extends Seeder
 
     public function runTenantSpecificSeeders()
     {
-        \App\Models\User::factory(1)->create();
+        $this->call(\Database\Seeders\TenantSeeder::class);
     }
 
     public function runLandlordSpecificSeeders()
     {
-        $this->call(TenantSeeder::class);
+        $this->call(\Database\Seeders\LandLordSeeder::class);
         //$this->call(RoleSeeder::class);
         //$this->call(MenuSeeder::class);
-        \App\Models\User::factory(1)->create();
+        \Call\Tenant\Models\LandlordUser::factory(1)->create([
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'johndoe@landlord.com',
+            'owner' => true,
+        ]);
     }
 }

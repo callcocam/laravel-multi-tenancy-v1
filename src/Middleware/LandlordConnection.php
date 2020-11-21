@@ -6,7 +6,7 @@
  */
 namespace Call\Tenant\Middleware;
 
-use Call\Models\Landlord;
+use Call\Tenant\Models\LandlordUser;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -22,7 +22,7 @@ class LandlordConnection
     public function handle(Request $request, Closure $next)
     {
         config([
-            'auth.providers.users.model' => Landlord::class,
+            'auth.providers.users.model' => config('landlord_model_user', LandlordUser::class),
         ]);
         return $next($request);
     }
