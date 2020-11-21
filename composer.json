@@ -1,0 +1,28 @@
+{
+    "name": "callcocam/siga-multtenancy-v1",
+    "description": "Construcao de formularios e tabelas para livewire",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "callcocam",
+            "email": "callcocam@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [
+            "helper.php"
+        ],
+        "psr-4": {
+            "Call\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Call\\Tenant\\Providers\\MuServiceProvider"
+            ]
+        }
+    },
+    "require": {}
+}
